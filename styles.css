@@ -1,0 +1,269 @@
+:root {
+    --primary-color: #1a1a2e;
+    --secondary-color: #16213e;
+    --accent-color: #0f3460;
+    --neon-color: #e94560;
+    --text-color: #ffffff;
+}
+
+* {
+    box-sizing: border-box;
+    padding: 0;
+    margin: 0;
+    font-family: 'Space Mono', monospace;
+}
+
+body {
+    display: flex;
+    overflow: hidden;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    background: linear-gradient(45deg, var(--primary-color), var(--secondary-color));
+    perspective: 1000px;
+}
+
+body::before {
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: radial-gradient(circle at center, rgba(255,255,255,0.05) 0%, transparent 70%);
+    content: '';
+    pointer-events: none;
+}
+
+/* Add these styles to styles.css */
+.risk-analysis {
+    padding: 20px;
+    margin-top: 25px;
+    border-left: 5px solid transparent;
+    border-radius: 10px;
+    background: rgba(31, 33, 68, 0.7);
+}
+
+.risk-analysis.low-risk {
+    border-left-color: #4caf50;
+    color: #4caf50;
+}
+
+.risk-analysis.medium-risk {
+    border-left-color: #ff9800;
+    color: #ff9800;
+}
+
+.risk-analysis.high-risk {
+    border-left-color: #f44336;
+    color: #f44336;
+}
+
+.risk-analysis h3 {
+    display: flex;
+    align-items: center;
+    margin-bottom: 15px;
+    gap: 10px;
+}
+
+.risk-analysis .risk-score {
+    margin-bottom: 10px;
+    font-size: 1.5rem;
+    font-weight: bold;
+}
+
+.recommendations, .security-insights {
+    padding: 10px;
+    margin-top: 15px;
+    border-radius: 5px;
+    background: rgba(0, 0, 0, 0.2);
+}
+
+.recommendations h4, .security-insights h4 {
+    margin-bottom: 10px;
+    color: var(--text-color);
+}
+
+.container {
+    position: relative;
+    width: 100%;
+    max-width: 500px;
+    padding: 40px;
+    border: 2px solid var(--neon-color);
+    border-radius: 15px;
+    background: rgba(31, 33, 68, 0.8);
+    box-shadow: 
+        0 0 10px var(--neon-color),
+        0 0 20px rgba(233, 69, 96, 0.5),
+        inset 0 0 15px rgba(233, 69, 96, 0.3);
+    transition: all 0.5s ease;
+    transform: rotateX(15deg);
+    text-align: center;
+    backdrop-filter: blur(10px);
+}
+
+.container::after {
+    position: absolute;
+    z-index: -1;
+    top: -2px;
+    right: -2px;
+    bottom: -2px;
+    left: -2px;
+    opacity: 0.3;
+    background: linear-gradient(45deg, transparent, var(--neon-color), transparent);
+    content: '';
+    filter: blur(5px);
+}
+
+h1 {
+    position: relative;
+    margin-bottom: 30px;
+    color: var(--neon-color);
+    text-shadow: 
+        0 0 5px var(--neon-color),
+        0 0 15px rgba(233, 69, 96, 0.5);
+    text-transform: uppercase;
+    letter-spacing: 3px;
+    font-size: 2.5rem;
+}
+
+h1 i {
+    margin-right: 15px;
+    color: var(--text-color);
+    text-shadow: none;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+input[type="text"] {
+    width: 100%;
+    padding: 15px;
+    border: 2px solid var(--accent-color);
+    border-radius: 8px;
+    color: var(--text-color);
+    background: rgba(22, 33, 62, 0.7);
+    transition: all 0.3s ease;
+    font-size: 18px;
+}
+
+input[type="text"]:focus {
+    border-color: var(--neon-color);
+    outline: none;
+    box-shadow: 0 0 15px var(--neon-color);
+}
+
+.submit-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    border: none;
+    border-radius: 8px;
+    color: var(--primary-color);
+    background: var(--neon-color);
+    cursor: pointer;
+    transition: all 0.3s ease;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 18px;
+    font-weight: bold;
+    gap: 10px;
+}
+
+.submit-button:hover {
+    box-shadow: 0 0 20px var(--neon-color);
+    transform: scale(1.05);
+}
+
+.info, .error {
+    padding: 20px;
+    margin-top: 25px;
+    border-left: 5px solid var(--neon-color);
+    border-radius: 10px;
+    color: var(--text-color);
+    background: rgba(31, 33, 68, 0.7);
+}
+
+.info p, .error p {
+    display: flex;
+    align-items: center;
+    margin: 10px 0;
+    opacity: 0.9;
+}
+
+.info p i, .error p i {
+    min-width: 25px;
+    margin-right: 15px;
+    color: var(--neon-color);
+    text-align: center;
+}
+
+.error {
+    border-left-color: #ff6b6b;
+    color: #ff6b6b;
+}
+
+@media (max-width: 480px) {
+    .container {
+        padding: 25px;
+        margin: 0 15px;
+        transform: none;
+    }
+}
+
+
+/* Custom Scrollbar Styles */
+body {
+    overflow-y: scroll; /* Always show vertical scrollbar */
+}
+
+body::-webkit-scrollbar {
+    width: 8px;
+}
+
+body::-webkit-scrollbar-track {
+    background: var(--secondary-color);
+}
+
+body::-webkit-scrollbar-thumb {
+    border-radius: 4px;
+    background-color: var(--neon-color);
+    transition: background-color 0.3s ease;
+}
+
+body::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in srgb, var(--neon-color) 80%, white);
+}
+
+.container::-webkit-scrollbar {
+    width: 6px;
+}
+
+.container::-webkit-scrollbar-track {
+    background: transparent;
+}
+
+.container::-webkit-scrollbar-thumb {
+    border-radius: 3px;
+    background-color: rgba(233, 69, 96, 0.5);
+}
+
+.container::-webkit-scrollbar-thumb:hover {
+    background-color: var(--neon-color);
+}
+
+/* Firefox scrollbar */
+* {
+    scrollbar-width: thin;
+    scrollbar-color: var(--neon-color) var(--secondary-color);
+}
+
+/* Animated background effect */
+@keyframes pulse {
+    0%, 100% { transform: scale(1); }
+    50% { transform: scale(1.05); }
+}
